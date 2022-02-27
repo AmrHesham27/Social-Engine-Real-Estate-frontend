@@ -44,7 +44,13 @@ export class AuthUserService {
     address: undefined
   } 
   /* for api connection */
-  public commonApiUrl:string = 'http://localhost:3000'
+
+  // use this line for development on your machnie
+  //public commonApiUrl:string = 'http://localhost:3000'
+
+  // use this line for heroku 
+  public commonApiUrl:string = 'https://social-engine-backend.herokuapp.com'
+  
   /****** authentican functions *****/
   /* this function should work for the first time the user open the app or when he refresh */
   authenticate(){
