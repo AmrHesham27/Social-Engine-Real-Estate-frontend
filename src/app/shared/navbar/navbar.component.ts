@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthUserService } from 'src/app/services/user/auth-user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,7 @@ import { AuthUserService } from 'src/app/services/user/auth-user.service';
 })
 export class NavbarUserComponent implements OnInit {
 
-  constructor(public _auth:AuthUserService, private router:Router) {  }
-
+  constructor(public _auth:AuthUserService, private router:Router, private toastr: ToastrService) { }
   ngOnInit(): void {
     this.thisPageUrl = this.router.url
   }
@@ -20,9 +20,13 @@ export class NavbarUserComponent implements OnInit {
       (res:any)=>{
         localStorage.removeItem('proToken')
         this._auth.isUserLoggedIn = false
+        this.toastr.success('You were logged out successfully', 'Success', { timeOut: 9000 });
         this.router.navigateByUrl('/')
       },
-      (e)=>{ console.log(e) },
+      (e)=>{ 
+        console.log(e)
+        this.toastr.error('please try again', 'Error', { timeOut: 9000 }); 
+      },
       ()=>{}
     )
   }

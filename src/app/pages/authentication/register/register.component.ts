@@ -40,8 +40,8 @@ export class RegisterComponent implements OnInit {
           console.log(res.data) 
           this.toastr.success('You were registered successfully', 'Success', { timeOut: 9000 });
         },
-        (e)=>{ 
-          this.toastr.error('Registration failed', 'Error', { timeOut: 9000 });
+        (e:any)=>{ 
+          this.toastr.error( e.data , 'Error', { timeOut: 9000 });
           console.log(e) 
         },
         ()=>{
