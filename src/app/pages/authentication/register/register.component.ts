@@ -60,12 +60,13 @@ export class RegisterComponent implements OnInit {
   loginNewUser(loginData:any){
     console.log(loginData)
     this._auth.login(loginData).subscribe(
-      (res) => { localStorage.setItem("proToken", res.data.token) },
-      (e)=>{ console.log(e) },
-      ()=>{
+      (res) => { 
+        localStorage.setItem("proToken", res.data.token) 
         this._auth.isUserLoggedIn=true
         this.router.navigateByUrl("/activate")
-      }        
+      },
+      (e)=>{ console.log(e) },
+      ()=>{}        
     )
   }
   get name(){ return this.register.get('name')}
