@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
         (e:any)=>{ 
           this.toastr.error( e['data'] , 'Error', { timeOut: 9000 });
           console.log(e)
-          console.log(e['error']) 
+          console.log(e['data']) 
         },
         ()=>{
           this.errorsObject={
