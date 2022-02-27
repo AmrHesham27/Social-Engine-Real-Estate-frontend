@@ -41,9 +41,8 @@ export class RegisterComponent implements OnInit {
           this.toastr.success('You were registered successfully', 'Success', { timeOut: 9000 });
         },
         (e:any)=>{ 
-          this.toastr.error( e['data'] , 'Error', { timeOut: 9000 });
+          this.toastr.error( 'Error happened please try again' , 'Error', { timeOut: 9000 });
           console.log(e)
-          console.log(e['data']) 
         },
         ()=>{
           this.errorsObject={
